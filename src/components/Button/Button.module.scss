@@ -1,0 +1,144 @@
+.search {
+    min-width: 48px;
+    height: 48px;
+    font-size: 24px;
+    border: none;
+    background-color: #3d464d;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 0 10px;
+    color: var(--color-text);
+}
+
+.closeAccount {
+    float: right;
+    font-size: 24px;
+    color: var(--color-text);
+}
+
+.titleForm {
+    color: var(--color-border);
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.SubmitAccount {
+    width: 200px;
+    height: 40px;
+    border: 2px solid var(--color-border);
+    color: var(--color-text);
+    box-shadow: 5px 0 15px 0 lightblue;
+}
+
+.btnSlider {
+    position: absolute;
+    background-color: lightblue;
+    padding: 10px 20px;
+    border-radius: 999px;
+    margin: 0 30px;
+    font-size: 25px;
+    opacity: 0.7;
+    z-index: 10;
+}
+
+.moveRight {
+    right: 0px;
+}
+
+.moveLeft {
+    left: 0;
+}
+
+.btnPlayList {
+    color: white;
+}
+
+.haveAccount {
+    color: white;
+    padding: 10px 40px;
+    border-radius: 999px;
+    border: 3px solid white;
+    margin-right: 10px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.loginRecommended {
+    color: white;
+    background-color: red;
+    padding: 10px 40px;
+    border-radius: 999px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.btnRight {
+    padding: 40px;
+    color: white;
+}
+
+.btnQueue {
+    background-color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 999px;
+    border: 2px solid white;
+}
+
+.queue {
+    width: 100%;
+}
+
+.history {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.option {
+    padding-left: 13px;
+    padding-right: 13px;
+    margin-left: 10px;
+    border-radius: 999px;
+}
+
+.cardRow {
+    padding: 10px;
+    width: 100%;
+    display: inline-block;
+}
+
+.cardRow:hover {
+    background-color: #000000;
+    border-radius: 5px;
+}
+
+
+.cardRow img {
+    margin-right: 10px;
+    width: 56px;
+    height: 56px;
+    float: left;
+}
+
+.like {
+    color: red;
+}

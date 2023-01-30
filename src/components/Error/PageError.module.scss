@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+}
+
+.status {
+    position: absolute;
+    top: 27%;
+    font-size: 224px;
+    color: #000000;
+    text-shadow: -1px -1px 0 #8400ff, 1px 1px 0 #ff005a;
+    font-weight: 900;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+.message {
+    font-size: 42px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    z-index: 10;
+    text-transform: uppercase;
+    color: var(--color-text);
+    font-family: sans-serif;
+    text-shadow: 0 2px 0 #8400ff;
+    letter-spacing: 15px;
+}
+
+.homePage {
+    top: 65%;
+    position: absolute;
+    border: solid #ff005a 3px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    color: #ff005a;
+}

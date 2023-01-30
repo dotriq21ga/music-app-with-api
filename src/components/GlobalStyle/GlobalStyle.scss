@@ -1,0 +1,105 @@
+@import 'normalize.css';
+
+:root {
+    --header-color: #21252D;
+    --color-text: rgba(247, 245, 245);
+    --color-border: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+html {}
+
+body {
+    overflow-x: hidden;
+    background-color: #000000;
+}
+
+#root {
+    position: relative;
+}
+
+input:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    cursor: pointer;
+}
+
+//divide component
+.error {
+    color: red;
+    position: absolute;
+    top:-20px;
+    width: 100%;
+}
+
+.container-error {
+    position: relative;
+}
+
+.notification {
+    background-color: #5cb85c;
+    padding: 15px;
+    position: fixed;
+    display: flex;
+    border-radius: 5px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+}
+
+.notification svg {
+    background-color: #ffffff;
+    border-radius: 999px;
+    padding: 10px;
+}
+
+.notification div {
+    margin-left: 10px;
+    display: flex;
+    align-self: center;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-text);
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    background-color: var(--header-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-text);
+}
+
+div {
+    color: var(--color-text);
+}

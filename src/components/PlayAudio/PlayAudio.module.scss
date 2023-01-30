@@ -1,0 +1,169 @@
+.round {
+    width: 100%;
+    background-color: var(--header-color);
+    border-top: 1px solid white;
+    height: 90px;
+    padding: 20px;
+    display: block;
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    min-width: 710px;
+    z-index: 30;
+    flex-grow: 1;
+}
+
+.box img {
+    width: 56px;
+    height: 56px;
+}
+
+.container {
+    width: 100%;
+    height: 80px;
+}
+
+.contains {
+    padding: 5px 5px 5px 10px;
+}
+
+.box {
+    display: flex;
+    width: 33%;
+}
+
+.text {
+    margin-top: 5px;
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.box-icon {
+    width: 33%;
+    width: 33%;
+}
+
+.container-icon {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 70px;
+}
+
+.container-icon button {
+    font-size: 20px;
+}
+
+.box-icon progress {
+    width: 100%;
+    height: 2px;
+}
+
+.container-icon-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 33%;
+}
+
+input[type="range"] {
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 3px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+::-webkit-slider-runnable-track {
+    background: #ddd;
+}
+
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 5px;
+    background: red;
+    box-shadow: -300px 0 0 300px red;
+    border: 2px solid red;
+}
+
+::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+
+::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -200px 0 0 200px dodgerblue;
+    box-sizing: border-box;
+}
+
+::-ms-fill-lower {
+    background: dodgerblue;
+}
+
+::-ms-thumb {
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+::-ms-ticks-after {
+    display: none;
+}
+
+::-ms-ticks-before {
+    display: none;
+}
+
+::-ms-track {
+    background: #ddd;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+::-ms-tooltip {
+    display: none;
+}
+
+.wrapper {
+    top: 0;
+    right: 0;
+    width: 330px;
+    position: fixed;
+    height: 100vh;
+    background-color: #21252d;
+    z-index: 20;
+}
+
+.header {
+    padding: 17.8px 15px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+}
+
+.box-contains {
+    padding: 10px 10px 10px 10px;
+    height: 545px;
+    overflow-y: scroll;
+}
+
+.card-list {
+    margin: 5px 10px;
+    line-height: 20px;
+    text-align: left;
+}
+
+.title {
+    margin: 10px;
+}

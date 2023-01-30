@@ -1,0 +1,410 @@
+{
+                        isAccount ?
+                            <Button account>
+                                Đỗ Trí
+                            </Button> :
+                            <>
+                                <Button
+                                    onClick={() => { formAccount ? setFormAccount(false) : setFormAccount(true) }}
+                                    account
+                                >Login</Button>
+                                <Button
+                                    onClick={() => { formAccount ? setFormAccount(false) : setFormAccount(true) }}
+                                    account
+                                >Register</Button>
+                            </>
+                    }
+
+
+                    <div className={cx('form-input')}>
+                <FormAccount display={formAccount} />
+            </div>
+
+
+
+            {
+            display ?
+
+                isRegister ?
+                    
+
+                    :
+
+                    <div className={cx('FormAccount')}>
+                        <Button closeAccount>
+                            <FontAwesomeIcon icon={faXmark} />
+                        </Button>
+                        <Button titleForm>Login</Button>
+
+                        <form onSubmit={handleSubmit}>
+                            <div className={cx('input-form')}>
+                                <div className={cx('form-container')}>
+                                    <Input AccountForm type={'email'} name={'email'} onChange={e => setemail(e.target.value)} placeholder={"Email"} />
+
+                                    <Input AccountForm type={'password'} name={'password'} onChange={e => setPassword(e.target.value)} placeholder={"Password"} />
+                                </div>
+                                <div className={cx('remember')}>
+                                    <div>
+                                        <Input remember type={"radio"} name={'remember'} />
+                                        <span>Remember me</span>
+                                    </div>
+                                    <div>
+                                        <Button href="/">Forgot Password?</Button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div className={cx('container-btn')}>
+                                <Button SubmitAccount>Login</Button>
+                            </div>
+                        </form>
+
+                        <div className={cx('input-form')}>
+                            <Button onClick={() => { setIsRegister(true) }}>Don't have an account yet ! Create an account.</Button>
+                        </div>
+                    </div>
+
+                :
+
+                Fragment
+
+        }
+
+
+
+        import { useState } from "react";
+import styles from '../FormAccount.module.scss'
+import classNames from "classnames/bind";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import Button from "../../../Button";
+import Input from "../../../Input";
+const cx = classNames.bind(styles);
+
+async function loginUser(credentials) {
+    return fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+    })
+        .then(data => (data.json()))
+}
+
+function Login({ setToken }) {
+    const [email, setemail] = useState();
+    const [password, setPassword] = useState();
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const token = await loginUser({
+            email,
+            password
+        });
+
+        setToken(token.access_token)
+    }
+
+    return <>
+        <div className={cx('FormAccount')}>
+            <Button closeAccount>
+                <FontAwesomeIcon icon={faXmark} />
+            </Button>
+            <Button titleForm>Login</Button>
+
+            <form onSubmit={handleSubmit}>
+                <div className={cx('input-form')}>
+                    <div className={cx('form-container')}>
+                        <Input AccountForm type={'email'} name={'email'} onChange={e => setemail(e.target.value)} placeholder={"Email"} />
+
+                        <Input AccountForm type={'password'} name={'password'} onChange={e => setPassword(e.target.value)} placeholder={"Password"} />
+                    </div>
+                    <div className={cx('remember')}>
+                        <div>
+                            <Input remember type={"radio"} name={'remember'} />
+                            <span>Remember me</span>
+                        </div>
+                        <div>
+                            <Button href="/">Forgot Password?</Button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className={cx('container-btn')}>
+                    <Button SubmitAccount>Login</Button>
+                </div>
+            </form>
+
+            <div className={cx('input-form')}>
+                <Button>Don't have an account yet ! Create an account.</Button>
+            </div>
+        </div>
+    </>;
+}
+
+export default Login;
+
+
+
+
+
+
+
+
+
+
+{ 
+          privateRoutes.map((route, index) => {
+            const Page = route.component;
+            let Layout = Defaultlayout;
+            if (route.layout) {
+              Layout = route.layout;
+            } else if (route.layout === null) {
+              Layout = Fragment;
+            }
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })
+        }
+
+
+//token
+
+        import { useState } from 'react';
+
+export default function useToken() {
+    const getToken = () => {
+        const tokenString = sessionStorage.getItem('token');
+        const userToken = JSON.parse(tokenString);
+        return userToken
+    };
+
+    const [token, setToken] = useState(getToken());
+
+    const saveToken = userToken => {
+        sessionStorage.setItem('token', JSON.stringify(userToken));
+        setToken(userToken.token);
+    };
+
+    return {
+        setToken: saveToken,
+        token
+    }
+}
+
+
+
+.asyncButton:after {
+  content: "";
+  background-color: rgba(112, 76, 182, 0.15);
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: width 1s linear, opacity 0.5s ease 1s;
+}
+
+
+
+import { createStore } from 'redux';
+import rootReducer from './reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+    key: 'root',
+    storage,
+}
+
+const composedEnhancers = composeWithDevTools();
+
+/* const store = createStore(rootReducer, composedEnhancers); */
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(persistedReducer, composedEnhancers);
+
+export default store;
+
+export const persistor = persistStore(store);
+
+
+/* import { PersistGate } from 'redux-persist/integration/react' */
+
+
+/* , { persistor } */
+
+
+{/* <PersistGate loading={null} persistor={persistor}> */}
+
+  {/* </PersistGate> */}
+
+
+  const initState = {
+    currentUser: {},
+    loading: false,
+    error: '',
+}
+
+const rootReducer = (state = initState, action) => {
+    switch (action.type) {
+        case 'GETUSER':
+            return { ...state, currentUser: action.payload, loading: false, error: '' }
+        case 'NOUSER':
+            return { ...state, currentUser: {} }
+        default:
+            return {
+                ...state
+            }
+    }
+}
+
+export default rootReducer;
+
+
+
+/* async function loginUser(credentials) {
+    return fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+    })
+        .then(data => (data.json()))
+} */
+
+async function auUser(token) {
+    if (token) {
+        return 
+    }
+}
+
+
+
+
+ /* getUser: (state, action) => {
+            state.currentUser = action.payload
+        }, */
+
+
+        export let persistor = persistStore(store)
+
+
+
+
+
+        const reducers = combineReducers({
+    data: rootReducer,
+});
+
+/* const persistConfig = {
+    key: 'root',
+    storage,
+}; */
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+const store = configureStore({
+    reducer: persistedReducer,
+    middleware: [thunk],
+});
+import { combineReducers } from 'redux';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
+import thunk from 'redux-thunk';
+import persistStore from "redux-persist/es/persistStore";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* {
+                    albums.map((items) => {
+                        return (
+                            <div key={items.id}></div>
+                        )
+                    })
+                } */}
+
+ if (cookie) {
+        const t = console.log(JSON.parse(cookie))
+        console.log(t)
+    }
+
+
+const cookie = Cookies.get('song')
+
+                Cookies.set('song', JSON.stringify(JSON.parse(cookie).push(detail.items.songs[0])))
+
+
+
+
+
+
+
+
+
+
+                {
+                                                                    classHiden[index] ?
+                                                                        
+                                                                            <>
+                                                                                <div className={(cx('box-animation'))}>
+                                                                                    <div style={{ height: '25px' }} className={(cx('animation'))}></div>
+                                                                                    <div className={[cx('animation1', cx('animation'))]}></div>
+                                                                                    <div className={[cx('animation2', cx('animation'))]}></div>
+                                                                                    <div className={[cx('animation3', cx('animation'))]}></div>
+                                                                                </div>
+                                                                            </> 
+                                                                        :
+                                                                        <div className={cx('icon-the-hidden')}>
+                                                                            <FontAwesomeIcon icon={faPlay} />
+                                                                        </div>
+                                                                }
+
+
+
+                                                                'name' => 'required|unique:App\Models\User,name',
+                'email' => 'required|email|unique:App\Models\User,email',
+                'password' => 'required',

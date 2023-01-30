@@ -1,0 +1,30 @@
+.list-album {
+    display: flex;
+}
+
+.card {
+    padding: 20px;
+    width: 100%;
+}
+
+.card div {
+    opacity: 0.8;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 150px;
+}
+
+.list-album img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.title {
+    padding: 0 20px;
+}
+
+.title-card {
+    font-size: 20px;
+}
